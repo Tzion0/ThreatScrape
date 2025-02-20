@@ -16,7 +16,10 @@ The tool automatically excludes **common news sites** and refines results based 
 Ensure you have Python 3 installed, then install required libraries:
 
 ```bash
+# Option 1
 pip install requests argparse logging json
+# Option 2
+pip install -r requirements.txt --br
 ```
 
 ### 2. Get API Keys
