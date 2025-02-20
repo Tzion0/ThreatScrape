@@ -22,9 +22,9 @@ pip install requests argparse logging json
 ### 2. Get API Keys
 You need the following API keys:
 
-✅ **Google Custom Search API Key** 👉 [Get it here](https://developers.google.com/custom-search/v1/introduction#identify_your_application_to_google_with_api_key)
-✅ **Google Custom Search Engine ID (CX)** 👉 [Get it here](https://cse.google.com/all)
-✅ **Google Gemini AI API Key** 👉 [Get it here](https://aistudio.google.com/apikey)
+- **Google Custom Search API Key** 👉 [Get it here](https://developers.google.com/custom-search/v1/introduction#identify_your_application_to_google_with_api_key)
+- **Google Custom Search Engine ID (CX)** 👉 [Get it here](https://cse.google.com/all)
+- **Google Gemini AI API Key** 👉 [Get it here](https://aistudio.google.com/apikey)
 
 ---
 
@@ -77,7 +77,7 @@ or specify a different **config file**:
 python threatscrape.py "Ocean Lotus" --config custom_config.json
 ```
 
-### 🎯 Example Queries:
+### Example Queries:
 ```bash
 python threatscrape.py "APT28"
 python threatscrape.py "Lazarus Group"
