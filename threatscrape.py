@@ -25,7 +25,7 @@ def get_related_keywords(search_term, gemini_api_key):
         return [search_term]
 
     gemini_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={gemini_api_key}"
-    prompt = f"Provide related APT or threat actor names for: {search_term}. Include alternative names and aliases, separated by commas."
+    prompt = f"Provide related APT or threat actor names for: {search_term}. Include alternative names and aliases, separated by commas. Do note that do not include name that are similar but not related. For instance, APT42 is not equivalent to APT41. If there are not alternatives names or aliases, please provide the same name."
 
     headers = {"Content-Type": "application/json"}
     payload = {"contents": [{"parts": [{"text": prompt}]}]}
@@ -56,7 +56,10 @@ def build_google_dorking_query(base_keyword, config):
     intext_keywords = config.get("INTEXT_KEYWORDS", [])
     intext_query = " ".join(f"intext:{kw}" for kw in intext_keywords)
 
-    full_query = f"({query_terms}) {exclusion_query} {intext_query}"
+    excluded_keywords = config.get("EXCLUDED_KEYWORDS", [])
+    exclusion_keywords_query = " ".join(f"-{kw}" for kw in excluded_keywords)
+
+    full_query = f"({query_terms}) {exclusion_query} {intext_query} {exclusion_keywords_query}"
     logging.info(f"Generated Google Dorking Query: {full_query}")
 
     return full_query
